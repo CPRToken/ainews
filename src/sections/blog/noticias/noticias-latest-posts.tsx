@@ -54,6 +54,7 @@ export default function NewsLatestPosts() {
         const offset = (page - 1) * pageSize;
         let startAfterDoc = null;
         if (offset > 0 && offset < total) {
+          // @ts-ignore
           startAfterDoc = allSnap.docs[offset - 1];
         }
 
