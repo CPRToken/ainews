@@ -10,7 +10,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { _socials } from 'src/_mock';
+
 
 import Iconify from 'src/components/iconify';
 
@@ -54,13 +54,7 @@ export default function PostSidebar({
           {author.role}
         </Typography>
 
-        <Stack direction="row">
-          {_socials.map((social) => (
-            <IconButton key={social.value}>
-              <Iconify icon={social.icon} sx={{ color: social.color }} />
-            </IconButton>
-          ))}
-        </Stack>
+
       </Stack>
     </Stack>
   );

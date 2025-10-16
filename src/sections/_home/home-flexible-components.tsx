@@ -11,7 +11,7 @@ import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 import Radio from '@mui/material/Radio';
 import Paper from '@mui/material/Paper';
-import Badge from '@mui/material/Badge';
+
 import Slider from '@mui/material/Slider';
 import Switch from '@mui/material/Switch';
 import Rating from '@mui/material/Rating';
@@ -34,7 +34,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
-import { _mock } from 'src/_mock';
+
 
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
@@ -232,13 +232,8 @@ export default function HomeFlexibleComponents() {
               spacing={{ xs: 3, md: 5 }}
               sx={{ width: 1 }}
             >
-              <Avatar alt="Remy Sharp" src={_mock.image.avatar(4)} sx={{ width: 64, height: 64 }} />
 
-              <AvatarGroup max={4}>
-                {[...Array(8)].map((_, index) => (
-                  <Avatar key={index} alt={_mock.fullName(index)} src={_mock.image.avatar(index)} />
-                ))}
-              </AvatarGroup>
+
 
               <Tooltip title="Add" placement="top" arrow>
                 <Button color="inherit">Hover Me</Button>
@@ -299,21 +294,7 @@ export default function HomeFlexibleComponents() {
                   <CardHeader
                     title="Jayvion Simon"
                     subheader="California, United States"
-                    avatar={
-                      <Badge
-                        variant="online"
-                        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                      >
-                        <Avatar
-                          alt={_mock.fullName(0)}
-                          src={_mock.image.avatar(0)}
-                          sx={{
-                            width: 48,
-                            height: 48,
-                          }}
-                        />
-                      </Badge>
-                    }
+
                     titleTypographyProps={{
                       typography: 'subtitle2',
                       sx: { mb: 0.25 },
@@ -321,16 +302,6 @@ export default function HomeFlexibleComponents() {
                     subheaderTypographyProps={{ typography: 'caption' }}
                     sx={{ p: 2 }}
                   />
-                  <Box sx={{ px: 1 }}>
-                    <Image
-                      alt="cover-url"
-                      src={_mock.image.cover(11)}
-                      ratio="16/9"
-                      sx={{
-                        borderRadius: 1.5,
-                      }}
-                    />
-                  </Box>
 
                   <Typography variant="body2" sx={{ color: 'text.secondary', pt: 2, px: 2 }}>
                     Phasellus dolor. Fusce egestas elit eget lorem. Quisque id odio.

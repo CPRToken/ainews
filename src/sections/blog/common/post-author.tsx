@@ -3,7 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
-import { _socials } from 'src/_mock';
+
 
 import Iconify from 'src/components/iconify';
 
@@ -43,13 +43,7 @@ export default function PostAuthor({ author }: Props) {
             </Typography>
           </Stack>
 
-          <Stack direction="row">
-            {_socials.map((social) => (
-              <IconButton key={social.value}>
-                <Iconify icon={social.icon} sx={{ color: social.color }} />
-              </IconButton>
-            ))}
-          </Stack>
+
         </Stack>
 
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
