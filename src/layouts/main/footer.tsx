@@ -18,7 +18,7 @@ import { RouterLink } from 'src/routes/components';
 import { useBoolean } from 'src/hooks/use-boolean';
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { _socials } from 'src/_mock';
+
 
 import Logo from 'src/components/logo';
 import Iconify from 'src/components/iconify';
@@ -127,13 +127,7 @@ export default function Footer() {
 
               <Stack spacing={2}>
                 <Typography variant="h6">Social</Typography>
-                <Stack direction="row" alignItems="center">
-                  {_socials.map((social) => (
-                    <IconButton key={social.value} color="primary">
-                      <Iconify icon={social.icon} />
-                    </IconButton>
-                  ))}
-                </Stack>
+
               </Stack>
 
               <Stack spacing={2}>
