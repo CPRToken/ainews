@@ -2,42 +2,33 @@ import { useState, useEffect, useCallback } from 'react';
 
 // ----------------------------------------------------------------------
 
-export function useLocalStorage(key: string, initialState: any) {
-  const [state, setState] = useState(initialState);
+export function useLocalStorage<T extends object>(key: string, initialState: T) {
+  const [state, setState] = useState<T>(initialState);
 
   useEffect(() => {
-    const restored = getStorage(key);
-
+    const restored = getStorage<T>(key);
     if (restored) {
-      setState((prevValue: any) => ({
-        ...prevValue,
+      setState((prev) => ({
+        ...prev,
         ...restored,
       }));
     }
   }, [key]);
 
   const updateState = useCallback(
-    (updateValue: any) => {
-      setState((prevValue: any) => {
-        setStorage(key, {
-          ...prevValue,
-          ...updateValue,
-        });
-
-        return {
-          ...prevValue,
-          ...updateValue,
-        };
+    (updateValue: Partial<T>) => {
+      setState((prev) => {
+        const newValue = { ...prev, ...updateValue };
+        setStorage(key, newValue);
+        return newValue;
       });
     },
     [key]
   );
 
   const update = useCallback(
-    (name: string, updateValue: any) => {
-      updateState({
-        [name]: updateValue,
-      });
+    (name: keyof T, updateValue: T[keyof T]) => {
+      updateState({ [name]: updateValue } as Partial<T>);
     },
     [updateState]
   );
@@ -47,32 +38,22 @@ export function useLocalStorage(key: string, initialState: any) {
     setState(initialState);
   }, [initialState, key]);
 
-  return {
-    state,
-    update,
-    reset,
-  };
+  return { state, update, reset };
 }
 
 // ----------------------------------------------------------------------
 
-export const getStorage = (key: string) => {
-  let value = null;
-
+export const getStorage = <T,>(key: string): T | null => {
   try {
     const result = window.localStorage.getItem(key);
-
-    if (result) {
-      value = JSON.parse(result);
-    }
+    return result ? (JSON.parse(result) as T) : null;
   } catch (error) {
     console.error(error);
+    return null;
   }
-
-  return value;
 };
 
-export const setStorage = (key: string, value: any) => {
+export const setStorage = (key: string, value: unknown) => {
   try {
     window.localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {

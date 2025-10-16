@@ -36,7 +36,8 @@ export function SettingsProvider({ children, defaultSettings }: Props) {
   const memoizedValue = useMemo(
     () => ({
       ...state,
-      onUpdate: update,
+      onUpdate: update as unknown as (name: string, value: string | boolean) => void,
+
       // Reset
       canReset,
       onReset: reset,
