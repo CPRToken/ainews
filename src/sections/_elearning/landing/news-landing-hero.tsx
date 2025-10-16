@@ -1,8 +1,6 @@
 // src/sections/_elearning/landing/news-landing-hero.tsx
 import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
@@ -14,10 +12,8 @@ import { useResponsive } from 'src/hooks/use-responsive';
 
 import { fShortenNumber } from 'src/utils/format-number';
 
-
 import { bgGradient } from 'src/theme/css';
 
-import Iconify from 'src/components/iconify';
 import { PlayerDialog } from 'src/components/player';
 
 import FeaturedNews from 'src/sections/blog/news/featured-news';
