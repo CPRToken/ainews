@@ -98,7 +98,7 @@ export default function NewsLatestPosts() {
   };
 
   return (
-    <Container sx={{ py: { xs: 7, md: 7, lg: 5 } }}>
+    <Container sx={{ py: { xs: 4, md: 4, lg: 5 } }}>
       <Stack
         direction="row"
         alignItems="center"

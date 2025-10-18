@@ -18,7 +18,7 @@ export default function FeaturedNoticias() {
 
   useEffect(() => {
     const fetchFeatured = async () => {
-      const q = query(collection(db, 'noticiasPosts'), orderBy('createdAt', 'desc'), limit(1));
+      const q = query(collection(db, 'featuredNoticias'), orderBy('createdAt', 'desc'), limit(1));
       const snap = await getDocs(q);
       if (!snap.empty) setPost({ id: snap.docs[0].id, ...snap.docs[0].data() });
     };
@@ -30,8 +30,8 @@ export default function FeaturedNoticias() {
   return (
     <Box
       sx={{
-        width: 570,
-        borderRadius: 3,
+        width: 600,
+        borderRadius: 2,
         overflow: 'hidden',
         boxShadow: 5,
         bgcolor: 'background.paper',
@@ -51,7 +51,7 @@ export default function FeaturedNoticias() {
       />
 
       {/* 📄 Content below */}
-      <Stack direction="row" spacing={3} sx={{ p: 3 }}>
+      <Stack direction="row" spacing={2} sx={{ p: 1 }}>
         <Stack sx={{ textAlign: 'center' }}>
           <Typography variant="subtitle2">{fDate(post.createdAt, 'MMM')}</Typography>
           <Divider sx={{ mt: 1, mb: 0.5 }} />
@@ -61,7 +61,7 @@ export default function FeaturedNoticias() {
         <Stack spacing={1}>
           <Link
             component={RouterLink}
-            href={`/es/${post.slug}`}
+            href={`/es/noticias/${post.slug}`}
             color="inherit"
             underline="hover"
           >

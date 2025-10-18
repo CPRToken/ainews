@@ -2,7 +2,7 @@
 import { useScroll } from 'framer-motion';
 
 import MainLayout from 'src/layouts/main';
-import Footer from 'src/layouts/main/footer';
+import Pieser from 'src/layouts/main/pieser';
 
 
 import ScrollProgress from 'src/components/scroll-progress';
@@ -26,7 +26,7 @@ export default function CasaView() {
       <NoticiasLatestPosts />
 
 
-      <Footer />
+      <Pieser />
 
 
 

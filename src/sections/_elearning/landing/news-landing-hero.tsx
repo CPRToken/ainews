@@ -44,13 +44,13 @@ export default function NewsLandingHero() {
             imgUrl: '/assets/background/overlay_1.jpg',
           }),
           overflow: 'hidden',
-          py: { xs: 8, md: 12 },
+          py: { xs: 8, md: 10, lg: 8 },
         }}
       >
         <Container
           sx={{
-            pt: { xs: 3, md: 5 },   // ✅ adds space from top navbar
-            pb: { xs: 2, md: 1 },
+            pt: { xs: 3, md: 2 },   // ✅ adds space from top navbar
+            pb: { xs: 2, md: 0 },
           }}
         >
           <Grid container spacing={6} alignItems="center">
@@ -58,7 +58,7 @@ export default function NewsLandingHero() {
             <Grid xs={12} md={6} lg={5}>
               <Stack spacing={3} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
                 <Typography variant="h2">
-                  Business AI News
+                  BUSINESS AI NEWS
 
                 </Typography>
 
@@ -72,7 +72,7 @@ export default function NewsLandingHero() {
 
 
 
-                <Divider sx={{ borderStyle: 'dashed', my: 5 }} />
+                <Divider sx={{ borderStyle: 'dashed', my: 2 }} />
 
                 <Stack
                   direction="row"

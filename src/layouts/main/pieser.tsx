@@ -1,32 +1,30 @@
+import Image from 'next/image';
+
+import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
-
-
 import Divider from '@mui/material/Divider';
 import Collapse from '@mui/material/Collapse';
 import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
-
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import { alpha, styled, useTheme } from '@mui/material/styles';
+
 import Stack, { StackProps } from '@mui/material/Stack';
 import InputAdornment from '@mui/material/InputAdornment';
 import Button, { buttonClasses } from '@mui/material/Button';
-import Image from 'next/image';
+import { alpha, styled, useTheme } from '@mui/material/styles';
+
 import { usePathname } from 'src/routes/hooks';
 import { RouterLink } from 'src/routes/components';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 import { useResponsive } from 'src/hooks/use-responsive';
-import Box from '@mui/material/Box';
-
 
 import Logo from 'src/components/logo';
 import Iconify from 'src/components/iconify';
 
 import { NavSubListProps } from './nav/types';
-import { pageLinks, navConfig } from './config-navigation';
+
 
 
 // ----------------------------------------------------------------------
@@ -44,7 +42,7 @@ const StyledAppStoreButton = styled(Button)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function Footer() {
+export default function Pieser() {
   const theme = useTheme();
   const mdUp = useResponsive('up', 'md');
 
@@ -52,7 +50,6 @@ export default function Footer() {
 
 
 
-  const desktopList = pageLinks.sort((listA, listB) => Number(listA.order) - Number(listB.order));
 
 
 
@@ -108,9 +105,9 @@ export default function Footer() {
 
               <Stack spacing={2}>
                 <Stack spacing={1}>
-                  <Typography variant="h6">Let’s stay in touch</Typography>
+                  <Typography variant="h6">Quedamos en contacto</Typography>
                   <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                    Ubscribe to our newsletter to receive latest articles to your inbox weekly.
+                    Suscríbete a nuestro boletín para recibir las últimas actualizaciones y ofertas.
                   </Typography>
                 </Stack>
 
@@ -122,7 +119,7 @@ export default function Footer() {
                     endAdornment: (
                       <InputAdornment position="end">
                         <Button variant="contained" color="inherit" size="large" sx={{ mr: -1.25 }}>
-                          Subscribe
+                         Suscribirse
                         </Button>
                       </InputAdornment>
                     ),
@@ -267,7 +264,7 @@ function AppStoreButton({ ...other }: StackProps) {
       <StyledAppStoreButton startIcon={<Iconify icon="ri:apple-fill" width={28} />}>
         <Stack alignItems="flex-start">
           <Typography variant="caption" sx={{ opacity: 0.72 }}>
-            Download on the
+           Bajarlo desde
           </Typography>
 
           <Typography variant="h6" sx={{ mt: -0.5 }}>

@@ -17,8 +17,7 @@ import { fShortenNumber } from 'src/utils/format-number';
 
 import { bgGradient } from 'src/theme/css';
 
-import Iconify from 'src/components/iconify';
-import { PlayerDialog } from 'src/components/player';
+
 
 import FeaturedNoticas from 'src/sections/blog/noticias/featured-noticias';
 
@@ -48,7 +47,7 @@ export default function NoticiasLandingHero() {
             imgUrl: '/assets/background/overlay_1.jpg',
           }),
           overflow: 'hidden',
-          py: { xs: 8, md: 12 },
+          py: { xs: 8, md: 5 },
         }}
       >
         <Container
@@ -62,7 +61,7 @@ export default function NoticiasLandingHero() {
             <Grid xs={12} md={6} lg={5}>
               <Stack spacing={3} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
                 <Typography variant="h2">
-                  Noticias IA
+                  NOTICIAS DE IA PARA EMPRESAS
 
                 </Typography>
 
@@ -125,11 +124,7 @@ export default function NoticiasLandingHero() {
         </Container>
       </Box>
 
-      <PlayerDialog
-        open={videoOpen.value}
-        onClose={videoOpen.onFalse}
-        videoPath="/assets/videos/demo.mp4"
-      />
+
     </>
   );
 }

@@ -1,4 +1,4 @@
-// src/pages/api/news.ts
+// src/pages/api/newsdata.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import OpenAI from 'openai';
 import { db } from 'src/libs/firebase';
@@ -12,25 +12,26 @@ import {
 } from 'firebase/firestore';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-const NEWS_API_KEY = process.env.NEWS_API_KEY;
+const NEWSDATA_API_KEY = process.env.NEWSDATA_API_KEY;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     // 1️⃣ Fetch real news
     const newsRes = await fetch(
-      `https://newsapi.org/v2/everything?q=technology&sortBy=publishedAt&language=en&pageSize=1&apiKey=${NEWS_API_KEY}`
+      `https://newsdata.io/api/1/news?apikey=${NEWSDATA_API_KEY}&q=AI+OR+crypto+OR+business&language=en&category=business,technology`
     );
 
-    const { articles } = await newsRes.json();
-    if (!articles?.length) {
+
+    const { results } = await newsRes.json();
+    if (!results?.length) {
       return res.status(404).json({ error: 'No articles found' });
     }
+    const article = results[0];
 
-    const article = articles[0];
 
     // Normalize image URL (remove tracking/query strings)
     const cleanImage =
-      article.urlToImage?.split('?')[0].trim() || '/assets/background/placeholder.jpg';
+      article.image_url?.split('?')[0].trim() || '/assets/background/placeholder.jpg';
 
     // 2️⃣ Rewrite with OpenAI
     const completion = await openai.chat.completions.create({
@@ -39,7 +40,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         {
           role: 'system',
           content:
-            'Rewrite this article in your own words as an engaging, detailed news article (400–600 words). Add a catchy title, a summary paragraph, key facts, and a natural, journalistic tone. Never copy text directly.',
+            'Reescribe este artículo con tus propias palabras como una noticia atractiva y detallada (400–600 palabras). Agrega un título llamativo, un párrafo resumen, hechos clave y un tono periodístico natural. Nunca copies el texto directamente..',
         },
         {
           role: 'user',
@@ -47,10 +48,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 Title: ${article.title}
 Description: ${article.description || ''}
 Content: ${article.content || ''}
-URL: ${article.url}
+URL: ${article.link}
 
-Rewrite this into a complete 400–600 word article with a headline, intro, and detailed sections.
-If there’s little content, expand naturally based on context from the title and description.
+Reescribe todo en un artículo completo de 400–600 palabras con titular, introducción y secciones desarrolladas.
+Si hay poco contenido, amplíalo de forma natural según el contexto del título y la descripción.
 `,
         },
       ],
@@ -70,7 +71,7 @@ If there’s little content, expand naturally based on context from the title an
     // 4️⃣ Check for duplicates by both image and slug
     const duplicates = await getDocs(
       query(
-        collection(db, 'newsPosts'),
+        collection(db, 'featuredNoticias'),
         where('slug', '==', slug)
       )
     );
@@ -82,7 +83,7 @@ If there’s little content, expand naturally based on context from the title an
 
     const duplicatesByImage = await getDocs(
       query(
-        collection(db, 'newsPosts'),
+        collection(db, 'featuredNoticias'),
         where('imageUrl', '==', cleanImage)
       )
     );
@@ -93,11 +94,11 @@ If there’s little content, expand naturally based on context from the title an
     }
 
     // 5️⃣ Save to Firestore
-    await addDoc(collection(db, 'newsPosts'), {
+    await addDoc(collection(db, 'featuredNoticias'), {
       title,
       slug,
       content,
-      originalSource: article.url,
+      originalSource: article.link,
       imageUrl: cleanImage,
       createdAt: serverTimestamp(),
     });

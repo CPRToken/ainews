@@ -96,12 +96,12 @@ export default function NewsLatestPosts() {
   };
 
   return (
-    <Container sx={{ py: { xs: 7, md: 7, lg: 7 } }}>
+    <Container sx={{ py: { xs: 7, md: 4, lg: 1 } }}>
       <Stack
         direction="row"
         alignItems="center"
         justifyContent={{ xs: 'center', md: 'space-between' }}
-        sx={{ mb: { xs: 8, md: 6 } }}
+        sx={{ mb: { xs: 8, md: 4 } }}
       >
         <Typography variant="h3">Latest News</Typography>
       </Stack>

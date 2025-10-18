@@ -27,7 +27,7 @@ export default function PostItemMobile({ post, onSiderbar }: Props) {
     >
       <Image
         alt={post.title}
-        src={post.coverUrl}
+        src={post.imageUrl}
         sx={{
           width: 80,
           height: 80,

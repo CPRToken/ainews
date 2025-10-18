@@ -64,30 +64,14 @@ export default function Header({ headerOnDark }: Props) {
                 : '/assets/logo/logo-grey.svg'
             }
             alt="Logo"
-            width={240}
+            width={300}
             height={50}
             priority
           />
         </Link>
 
 
-        <Link href="https://zone-docs.vercel.app/changelog" target="_blank" rel="noopener">
-          <Label
-            color="info"
-            sx={{
-              ml: 0.5,
-              px: 0.5,
-              top: -14,
-              left: 60,
-              height: 20,
-              fontSize: 11,
-              cursor: 'pointer',
-              position: 'absolute',
-            }}
-          >
-      v2.3.0
-          </Label>
-        </Link>
+
       </Box>
 
       {mdUp ? (

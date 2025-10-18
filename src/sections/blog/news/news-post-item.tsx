@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
-import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
 import { fDate } from 'src/utils/format-time';
@@ -27,16 +26,16 @@ export default function NewsPostItem({ post }: Props) {
       <Image src={post.imageUrl} alt={post.title} ratio="1/1" />
 
 
-      <Stack direction="row" spacing={3} sx={{ p: 3 }}>
+      <Stack direction="row" spacing={1} sx={{ p: 0.5 }}>
         <Stack sx={{ textAlign: 'center' }}>
           <Typography variant="subtitle2">{fDate(post.createdAt, 'MMM')}</Typography>
 
-          <Divider sx={{ mt: 1, mb: 0.5 }} />
+          <Divider sx={{ mt: 0, mb: 0 }} />
 
           <Typography variant="h3">{fDate(post.createdAt, 'dd')}</Typography>
         </Stack>
 
-        <Stack spacing={1}>
+        <Stack spacing={0}>
           <Link
             component={RouterLink}
             href={`/${post.slug}`}
@@ -53,7 +52,7 @@ export default function NewsPostItem({ post }: Props) {
             {post.description}
           </TextMaxLine>
 
-          <Stack spacing={1.5} direction="row" alignItems="center" sx={{ pt: 1.5 }}>
+          <Stack spacing={1} direction="row" alignItems="center" sx={{ pt: 0 }}>
 
             <Stack>
 
