@@ -30,7 +30,9 @@ export default function FeaturedNoticias() {
   return (
     <Box
       sx={{
-        width: 600,
+        width: { xs: '100%', sm: 500, md: 600 },
+        maxWidth: '100%',
+        mx: 'auto',
         borderRadius: 2,
         overflow: 'hidden',
         boxShadow: 5,
@@ -44,7 +46,7 @@ export default function FeaturedNoticias() {
         alt={post.title}
         sx={{
           width: '100%',
-          height: 300,
+          height: { xs: 200, sm: 280, md: 330 },
           objectFit: 'cover',
           display: 'block',
         }}

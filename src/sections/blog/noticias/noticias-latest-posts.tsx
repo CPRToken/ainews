@@ -22,7 +22,7 @@ import { useResponsive } from 'src/hooks/use-responsive';
 import { db } from 'src/libs/firebase';
 
 import NoticiasPostItem from './noticias-post-item';
-import PostItemMobile from '../common/post-item-mobile';
+import NoticiaItemMobile from '../common/noticia-item-mobile';
 
 // ----------------------------------------------------------------------
 
@@ -123,7 +123,7 @@ export default function NewsLatestPosts() {
           mdUp ? (
             <NoticiasPostItem key={post.id} post={post} />
           ) : (
-            <PostItemMobile key={post.id} post={post} />
+            <NoticiaItemMobile key={post.id} post={post} />
           )
         )}
       </Box>

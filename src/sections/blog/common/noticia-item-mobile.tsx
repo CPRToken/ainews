@@ -18,7 +18,7 @@ type Props = {
   onSiderbar?: boolean;
 };
 
-export default function PostItemMobile({ post, onSiderbar }: Props) {
+export default function NoticiaItemMobile({ post, onSiderbar }: Props) {
   return (
     <Stack
       spacing={2}
@@ -40,7 +40,7 @@ export default function PostItemMobile({ post, onSiderbar }: Props) {
       <Stack spacing={onSiderbar ? 0.5 : 1}>
         <Link
           component={RouterLink}
-          href={`/${post.slug}`}
+          href={`/es/${post.slug}`}
           color="inherit"
           underline="hover"
         >

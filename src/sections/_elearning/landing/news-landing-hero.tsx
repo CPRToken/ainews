@@ -44,13 +44,13 @@ export default function NewsLandingHero() {
             imgUrl: '/assets/background/overlay_1.jpg',
           }),
           overflow: 'hidden',
-          py: { xs: 8, md: 10, lg: 8 },
+          py: { xs: 6, md: 10, lg: 8 },
         }}
       >
         <Container
           sx={{
             pt: { xs: 3, md: 2 },   // ✅ adds space from top navbar
-            pb: { xs: 2, md: 0 },
+            pb: { xs: 0, md: 0 },
           }}
         >
           <Grid container spacing={6} alignItems="center">
@@ -72,51 +72,27 @@ export default function NewsLandingHero() {
 
 
 
-                <Divider sx={{ borderStyle: 'dashed', my: 2 }} />
+                <Divider sx={{ borderStyle: 'dashed', my: 0 }} />
 
-                <Stack
-                  direction="row"
-                  spacing={{ xs: 3, sm: 10 }}
-                  justifyContent={{ xs: 'center', md: 'flex-start' }}
-                >
-                  {SUMMARY.map((item) => (
-                    <Stack key={item.value} spacing={0.5} sx={{ position: 'relative' }}>
-                      <Box
-                        sx={{
-                          top: 8,
-                          left: -4,
-                          width: 24,
-                          height: 24,
-                          opacity: 0.24,
-                          borderRadius: '50%',
-                          position: 'absolute',
-                          bgcolor: `${item.color}.main`,
-                        }}
-                      />
-                      <Typography variant="h3">{fShortenNumber(item.value)}+</Typography>
-                      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                        {item.label}
-                      </Typography>
-                    </Stack>
-                  ))}
-                </Stack>
+
               </Stack>
             </Grid>
 
             {/* RIGHT SIDE */}
-            {mdUp && (
-              <Grid xs={12} md={6} lg={7}>
-                <Box
-                  sx={{
-                    maxWidth: 520,
-                    width: '100%',
-                    mx: 'auto',
-                  }}
-                >
-                  <FeaturedNews />
-                </Box>
-              </Grid>
-            )}
+            <Grid xs={12} md={6} lg={7}>
+              <Box
+                sx={{
+                  maxWidth: 520,
+                  width: '100%',
+                  mx: 'auto',
+                  mt: { xs: 0, md: 0 }, // small top margin for mobile
+                }}
+              >
+                <FeaturedNews />
+              </Box>
+            </Grid>
+
+
           </Grid>
         </Container>
       </Box>

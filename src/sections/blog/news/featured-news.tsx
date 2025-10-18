@@ -1,3 +1,4 @@
+// src/sections/blog/news/featured-news.tsx
 import { useState, useEffect } from 'react';
 import { query, limit, orderBy, getDocs, collection } from 'firebase/firestore';
 
@@ -30,25 +31,29 @@ export default function FeaturedNews() {
   return (
     <Box
       sx={{
-        width: 600,
+        width: { xs: '100%', sm: 500, md: 600 },
+        maxWidth: '100%',
+        mx: 'auto',
         borderRadius: 2,
         overflow: 'hidden',
         boxShadow: 5,
         bgcolor: 'background.paper',
       }}
     >
-      {/* 🖼️ Image on top */}
+
+    {/* 🖼️ Image on top */}
       <Box
         component="img"
         src={post.imageUrl || '/assets/background/placeholder.jpg'}
         alt={post.title}
         sx={{
           width: '100%',
-          height: 330,
+          height: { xs: 200, sm: 280, md: 330 },
           objectFit: 'cover',
           display: 'block',
         }}
       />
+
 
       {/* 📄 Content below */}
       <Stack direction="row" spacing={2} sx={{ p: 1 }}>
