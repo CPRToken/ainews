@@ -1,6 +1,9 @@
 {
+
   "name": "AI news",
+  "type": "module",
   "author": "AI news",
+
   "version": "2.3.0",
   "description": "Next & TypeScript",
   "private": true,

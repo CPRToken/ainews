@@ -10,13 +10,15 @@ import { alpha, useTheme } from '@mui/material/styles';
 import { useBoolean } from 'src/hooks/use-boolean';
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { fShortenNumber } from 'src/utils/format-number';
+
 
 import { bgGradient } from 'src/theme/css';
 
 import { PlayerDialog } from 'src/components/player';
 
 import FeaturedNews from 'src/sections/blog/news/featured-news';
+import { MegaMenuDesktopHorizontal } from '../../../components/mega-menu';
+
 
 // ----------------------------------------------------------------------
 
@@ -49,7 +51,7 @@ export default function NewsLandingHero() {
       >
         <Container
           sx={{
-            pt: { xs: 3, md: 2 },   // ✅ adds space from top navbar
+            pt: { xs: 3, md: 4 },   // ✅ adds space from top navbar
             pb: { xs: 0, md: 0 },
           }}
         >
@@ -91,6 +93,7 @@ export default function NewsLandingHero() {
                 <FeaturedNews />
               </Box>
             </Grid>
+
 
 
           </Grid>

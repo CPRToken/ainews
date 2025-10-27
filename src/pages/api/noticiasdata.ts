@@ -1,4 +1,5 @@
-// src/pages/api/newsdata.ts
+// src/pages/api/noticiasdata.ts
+
 import { NextApiRequest, NextApiResponse } from 'next';
 import OpenAI from 'openai';
 import { db } from 'src/libs/firebase';
@@ -35,7 +36,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // 2️⃣ Rewrite with OpenAI
     const completion = await openai.chat.completions.create({
-      model: 'gpt-5',
+      model: 'gpt-4o-mini',
       messages: [
         {
           role: 'system',

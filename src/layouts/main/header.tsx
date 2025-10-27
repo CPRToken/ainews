@@ -6,6 +6,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
+import { useSettingsContext } from 'src/components/settings';
 
 import { paths } from 'src/routes/paths';
 
@@ -26,7 +27,9 @@ import { HEADER } from '../config-layout';
 import Searchbar from '../common/searchbar';
 import { navConfig } from './config-navigation';
 import HeaderShadow from '../common/header-shadow';
+
 import SettingsButton from '../common/settings-button';
+import BaseOptions from '../../components/settings/drawer/base-options';
 
 // ----------------------------------------------------------------------
 
@@ -40,6 +43,7 @@ export default function Header({ headerOnDark }: Props) {
   const offset = useOffSetTop();
 
   const mdUp = useResponsive('up', 'md');
+  const settings = useSettingsContext();
 
   const router = useRouter();
 
@@ -58,16 +62,13 @@ export default function Header({ headerOnDark }: Props) {
       <Box sx={{ lineHeight: 0, position: 'relative' }}>
         <Link href="/" underline="none">
           <Image
-            src={
-              theme.palette.mode === 'dark'
-                ? '/assets/logo/logo-white.svg'
-                : '/assets/logo/logo-grey.svg'
-            }
+            src="/assets/logo/logonewswh.svg"
             alt="Logo"
-            width={300}
-            height={50}
+            width={350}
+            height={70}
             priority
           />
+
         </Link>
 
 
@@ -85,26 +86,35 @@ export default function Header({ headerOnDark }: Props) {
       <Stack spacing={2} direction="row" alignItems="center" justifyContent="flex-end">
         <Stack spacing={1} direction="row" alignItems="center">
           <Searchbar />
+          <Stack spacing={1} direction="row" alignItems="center">
 
-          <SettingsButton />
+
+            {/* ✅ Language flag switch */}
+            <Box
+              sx={{ cursor: 'pointer', width: 40, height: 30 }}
+              onClick={handleLanguageSwitch}
+            >
+              <Image
+                src={router.asPath.startsWith('/es') ? '/assets/flags/flag-uk.svg' : '/assets/flags/flag-es.svg'}
+                alt="Switch language"
+                width={32}
+                height={22}
+              />
+            </Box>
+          </Stack>
+
+          <BaseOptions
+            title=""
+            selected={settings.themeMode === 'dark'}
+            onClick={() =>
+              settings.onUpdate('themeMode', settings.themeMode === 'dark' ? 'light' : 'dark')
+            }
+            icons={['carbon:asleep', 'carbon:asleep-filled']}
+          />
+
         </Stack>
 
-        <Stack spacing={1} direction="row" alignItems="center">
 
-
-          {/* ✅ Language flag switch */}
-          <Box
-            sx={{ cursor: 'pointer', width: 40, height: 30 }}
-            onClick={handleLanguageSwitch}
-          >
-            <Image
-              src={router.asPath.startsWith('/es') ? '/assets/flags/flag-uk.svg' : '/assets/flags/flag-es.svg'}
-              alt="Switch language"
-              width={32}
-              height={22}
-            />
-          </Box>
-        </Stack>
 
 
         {mdUp && (
@@ -125,8 +135,21 @@ export default function Header({ headerOnDark }: Props) {
   );
 
   return (
-    <AppBar>
-      <Toolbar
+
+
+
+
+
+
+    <AppBar
+      sx={{
+        backgroundColor: '#121212', // always dark
+        color: 'common.white',
+        boxShadow: 'none',
+      }}
+    >
+
+    <Toolbar
         disableGutters
         sx={{
           height: {

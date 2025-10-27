@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Iconify from '../../iconify';
 import Scrollbar from '../../scrollbar';
 import BaseOptions from './base-options';
-import PresetsOptions from './presets-options';
+
 import { useSettingsContext } from '../context';
 
 // ----------------------------------------------------------------------
@@ -56,25 +56,10 @@ export default function SettingsDrawer() {
     />
   );
 
-  const renderDirection = (
-    <BaseOptions
-      title="Direction"
-      selected={settings.themeDirection === 'rtl'}
-      onClick={() =>
-        settings.onUpdate('themeDirection', settings.themeDirection === 'rtl' ? 'ltr' : 'rtl')
-      }
-      icons={['carbon:align-horizontal-right', 'carbon:align-horizontal-left']}
-    />
-  );
 
-  const renderPresets = (
-    <PresetsOptions
-      value={settings.themeColorPresets}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-        settings.onUpdate('themeColorPresets', (event.target as HTMLInputElement).value)
-      }
-    />
-  );
+
+
+
 
   return (
     <Drawer
@@ -95,9 +80,9 @@ export default function SettingsDrawer() {
         <Box sx={{ pb: 10 }}>
           {renderMode}
 
-          {renderDirection}
 
-          {renderPresets}
+
+
         </Box>
       </Scrollbar>
     </Drawer>
