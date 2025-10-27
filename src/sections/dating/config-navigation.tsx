@@ -1,4 +1,3 @@
-import { _mock } from 'src/_mock';
 
 import Iconify from 'src/components/iconify';
 
@@ -10,8 +9,7 @@ export const data = [
     title: 'Categories',
     icon: <Iconify icon="carbon:menu" sx={{ width: 1, height: 1 }} />,
     products: [...Array(10)].map((_, index) => ({
-      name: _mock.productName(index),
-      coverUrl: _mock.image.product(index),
+
       path: '#',
     })),
     moreLink: {
